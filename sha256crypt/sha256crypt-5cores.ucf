@@ -1,0 +1,182 @@
+#
+# This software is Copyright (c) 2018 Denis Burykin
+# [denis_burykin yahoo com], [denis-burykin2014 yandex ru]
+# and it is hereby released to the general public under the following terms:
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted.
+#
+
+
+// ===========================================================
+// Nodes (input to units) - left side
+AREA_GROUP "node1" RANGE=SLICE_X22Y26:SLICE_X39Y29;
+INST "pkt_comm/bcast_net/node[1].r*" AREA_GROUP="node1";
+INST "pkt_comm/units[0].unit_in_regs/stage[1].r*" AREA_GROUP="node1";
+INST "pkt_comm/units[1].unit_in_regs/stage[1].r*" AREA_GROUP="node1";
+INST "pkt_comm/units[2].unit_in_regs/stage[1].r*" AREA_GROUP="node1";
+INST "pkt_comm/units[3].unit_in_regs/stage[1].r*" AREA_GROUP="node1";
+INST "pkt_comm/units[4].unit_in_regs/stage[1].r*" AREA_GROUP="node1";
+
+AREA_GROUP "node2" RANGE=SLICE_X18Y76:SLICE_X42Y85;
+INST "pkt_comm/bcast_net/node[2].r*" AREA_GROUP="node2";
+INST "pkt_comm/units[0].unit_in_regs/stage[2].r*" AREA_GROUP="node2";
+INST "pkt_comm/units[1].unit_in_regs/stage[2].r*" AREA_GROUP="node2";
+INST "pkt_comm/units[2].unit_in_regs/stage[2].r*" AREA_GROUP="node2";
+INST "pkt_comm/units[3].unit_in_regs/stage[2].r*" AREA_GROUP="node2";
+INST "pkt_comm/units[4].unit_in_regs/stage[2].r*" AREA_GROUP="node2";
+
+AREA_GROUP "node3" RANGE=SLICE_X20Y135:SLICE_X43Y139;
+INST "pkt_comm/bcast_net/node[3].r*" AREA_GROUP="node3";
+INST "pkt_comm/units[0].unit_in_regs/stage[3].r*" AREA_GROUP="node3";
+INST "pkt_comm/units[1].unit_in_regs/stage[3].r*" AREA_GROUP="node3";
+INST "pkt_comm/units[2].unit_in_regs/stage[3].r*" AREA_GROUP="node3";
+
+
+// ===========================================================
+// Nodes - right side
+
+// ===========================================================
+// Output from units
+// stage 1, left side
+AREA_GROUP "unit_out_1l" RANGE=SLICE_X38Y17:SLICE_X43Y62;
+INST "pkt_comm/units[4].unit_out_regs/stage[1].r*" AREA_GROUP="unit_out_1l";
+INST "pkt_comm/units[3].unit_out_regs/stage[1].r*" AREA_GROUP="unit_out_1l";
+INST "pkt_comm/units[2].unit_out_regs/stage[1].r*" AREA_GROUP="unit_out_1l";
+INST "pkt_comm/units[1].unit_out_regs/stage[1].r*" AREA_GROUP="unit_out_1l";
+INST "pkt_comm/units[0].unit_out_regs/stage[1].r*" AREA_GROUP="unit_out_1l";
+
+// stage 2, left side
+AREA_GROUP "unit_out_2l" RANGE=SLICE_X38Y104:SLICE_X43Y131;
+INST "pkt_comm/units[3].unit_out_regs/stage[2].r*" AREA_GROUP="unit_out_2l";
+INST "pkt_comm/units[2].unit_out_regs/stage[2].r*" AREA_GROUP="unit_out_2l";
+INST "pkt_comm/units[1].unit_out_regs/stage[2].r*" AREA_GROUP="unit_out_2l";
+INST "pkt_comm/units[0].unit_out_regs/stage[2].r*" AREA_GROUP="unit_out_2l";
+
+
+// ===========================================================
+// Units - left side
+// Unit 0
+AREA_GROUP "u0_0" RANGE=SLICE_X0Y180:SLICE_X20Y187; # 21x8=672
+AREA_GROUP "u0_0" RANGE=RAMB8_X0Y90:RAMB8_X0Y93;
+INST "pkt_comm/units[0].unit/cores[0].core" AREA_GROUP="u0_0";
+
+AREA_GROUP "u0_1" RANGE=SLICE_X0Y172:SLICE_X20Y179; # 21x8=672
+AREA_GROUP "u0_1" RANGE=RAMB8_X0Y86:RAMB8_X0Y89;
+INST "pkt_comm/units[0].unit/cores[1].core" AREA_GROUP="u0_1";
+
+AREA_GROUP "u0_2" RANGE=SLICE_X0Y164:SLICE_X20Y171; # 21x8=672
+AREA_GROUP "u0_2" RANGE=RAMB8_X0Y82:RAMB8_X0Y85;
+INST "pkt_comm/units[0].unit/cores[2].core" AREA_GROUP="u0_2";
+
+AREA_GROUP "c0" RANGE=SLICE_X21Y176:SLICE_X33Y191,SLICE_X21Y168:SLICE_X39Y175;
+AREA_GROUP "c0" RANGE=RAMB8_X1Y86:RAMB8_X1Y95;
+INST "pkt_comm/units[0].unit/ctrl" AREA_GROUP="c0";
+
+// Unit 1
+AREA_GROUP "u1_0" RANGE=SLICE_X0Y156:SLICE_X20Y163;
+AREA_GROUP "u1_0" RANGE=RAMB8_X0Y78:RAMB8_X0Y81;
+INST "pkt_comm/units[1].unit/cores[0].core" AREA_GROUP="u1_0";
+
+AREA_GROUP "u1_1" RANGE=SLICE_X0Y148:SLICE_X20Y155;
+AREA_GROUP "u1_1" RANGE=RAMB8_X0Y74:RAMB8_X0Y77;
+INST "pkt_comm/units[1].unit/cores[1].core" AREA_GROUP="u1_1";
+
+AREA_GROUP "u1_2" RANGE=SLICE_X43Y152:SLICE_X63Y159; # RAMB X2
+AREA_GROUP "u1_2" RANGE=RAMB8_X2Y76:RAMB8_X2Y79;
+INST "pkt_comm/units[1].unit/cores[2].core" AREA_GROUP="u1_2";
+
+AREA_GROUP "c1" RANGE=SLICE_X21Y160:SLICE_X39Y167,SLICE_X21Y151:SLICE_X42Y159;
+AREA_GROUP "c1" RANGE=RAMB8_X1Y78:RAMB8_X1Y83;
+INST "pkt_comm/units[1].unit/ctrl" AREA_GROUP="c1";
+
+// Unit 2
+AREA_GROUP "u2_0" RANGE=SLICE_X0Y140:SLICE_X20Y147;
+AREA_GROUP "u2_0" RANGE=RAMB8_X0Y70:RAMB8_X0Y73;
+INST "pkt_comm/units[2].unit/cores[0].core" AREA_GROUP="u2_0";
+
+AREA_GROUP "u2_1" RANGE=SLICE_X43Y144:SLICE_X63Y151; # RAMB X2
+AREA_GROUP "u2_1" RANGE=RAMB8_X2Y72:RAMB8_X2Y75;
+INST "pkt_comm/units[2].unit/cores[1].core" AREA_GROUP="u2_1";
+
+AREA_GROUP "u2_2" RANGE=SLICE_X43Y136:SLICE_X63Y143; # RAMB X2
+AREA_GROUP "u2_2" RANGE=RAMB8_X2Y68:RAMB8_X2Y71;
+INST "pkt_comm/units[2].unit/cores[2].core" AREA_GROUP="u2_2";
+
+AREA_GROUP "c2" RANGE=SLICE_X21Y137:SLICE_X42Y150; # 22x14=1232* (+1 down)
+AREA_GROUP "c2" RANGE=RAMB8_X1Y70:RAMB8_X1Y75;
+INST "pkt_comm/units[2].unit/ctrl" AREA_GROUP="c2";
+
+// Unit 3
+AREA_GROUP "u3_0" RANGE=SLICE_X0Y132:SLICE_X20Y139;
+AREA_GROUP "u3_0" RANGE=RAMB8_X0Y66:RAMB8_X0Y69;
+INST "pkt_comm/units[3].unit/cores[0].core" AREA_GROUP="u3_0";
+
+AREA_GROUP "u3_1" RANGE=SLICE_X0Y124:SLICE_X20Y131;
+AREA_GROUP "u3_1" RANGE=RAMB8_X0Y62:RAMB8_X0Y65;
+INST "pkt_comm/units[3].unit/cores[1].core" AREA_GROUP="u3_1";
+
+AREA_GROUP "u3_2" RANGE=SLICE_X43Y128:SLICE_X63Y135; # RAMB X2
+AREA_GROUP "u3_2" RANGE=RAMB8_X2Y64:RAMB8_X2Y67;
+INST "pkt_comm/units[3].unit/cores[2].core" AREA_GROUP="u3_2";
+
+AREA_GROUP "c3" RANGE=SLICE_X21Y121:SLICE_X42Y135; # 22x15=1320* 22x14=1232
+AREA_GROUP "c3" RANGE=RAMB8_X1Y62:RAMB8_X1Y67;
+INST "pkt_comm/units[3].unit/ctrl" AREA_GROUP="c3";
+
+// Unit 4
+AREA_GROUP "u4_0" RANGE=SLICE_X0Y116:SLICE_X20Y123;
+AREA_GROUP "u4_0" RANGE=RAMB8_X0Y58:RAMB8_X0Y61;
+INST "pkt_comm/units[4].unit/cores[0].core" AREA_GROUP="u4_0";
+
+AREA_GROUP "u4_1" RANGE=SLICE_X0Y108:SLICE_X20Y115;
+AREA_GROUP "u4_1" RANGE=RAMB8_X0Y54:RAMB8_X0Y57;
+INST "pkt_comm/units[4].unit/cores[1].core" AREA_GROUP="u4_1";
+
+AREA_GROUP "u4_2" RANGE=SLICE_X43Y96:SLICE_X63Y103; # RAMB X2
+AREA_GROUP "u4_2" RANGE=RAMB8_X2Y48:RAMB8_X2Y51;
+INST "pkt_comm/units[4].unit/cores[2].core" AREA_GROUP="u4_2";
+
+AREA_GROUP "c4" RANGE=SLICE_X21Y106:SLICE_X42Y120; # 22x15=1320*
+AREA_GROUP "c4" RANGE=RAMB8_X1Y54:RAMB8_X1Y59;
+INST "pkt_comm/units[4].unit/ctrl" AREA_GROUP="c4";
+
+
+// ===========================================================
+// pkt_comm
+AREA_GROUP "pkt_comm" RANGE=SLICE_X52Y0:SLICE_X81Y14,SLICE_X66Y15:SLICE_X97Y19;
+AREA_GROUP "pkt_comm" RANGE=RAMB16_X3Y8:RAMB16_X3Y8; # 1
+AREA_GROUP "pkt_comm" RANGE=RAMB8_X3Y10:RAMB8_X3Y10; # 1
+INST "pkt_comm/inpkt_header*" AREA_GROUP="pkt_comm";
+INST "pkt_comm/word_gen*" AREA_GROUP="pkt_comm";
+INST "pkt_comm/cmp_config*" AREA_GROUP="pkt_comm";
+INST "pkt_comm/arbiter_tx*" AREA_GROUP="pkt_comm";
+INST "pkt_comm/arbiter_rx*" AREA_GROUP="pkt_comm";
+INST "pkt_comm/comparator*" AREA_GROUP="pkt_comm";
+INST "pkt_comm/outpkt*" AREA_GROUP="pkt_comm";
+INST "pkt_comm/rd_en*" AREA_GROUP="pkt_comm";
+
+AREA_GROUP "io1" RANGE=SLICE_X98Y11:SLICE_X105Y19;
+AREA_GROUP "io1" RANGE=RAMB16_X4Y6:RAMB16_X4Y8;
+INST "input_fifo/fifo_input1*" AREA_GROUP="io1";
+INST "pkt_comm/word_list*" AREA_GROUP="io1";
+
+AREA_GROUP "io0" RANGE=SLICE_X98Y0:SLICE_X127Y10;
+AREA_GROUP "io0" RANGE=RAMB16_X4Y0:RAMB16_X5Y4; # 6
+AREA_GROUP "io0" RANGE=DSP48_X3Y0:DSP48_X3Y2; # 3
+INST "input_fifo/fifo_input0*" AREA_GROUP="io0";
+INST "hs_io_inst*" AREA_GROUP="io0";
+INST "vcr_inst*" AREA_GROUP="io0";
+INST "output_fifo*" AREA_GROUP="io0";
+
+
+// ===========================================================
+// procb
+NET "pkt_comm/units[*].unit/ctrl/engine/process_bytes/saved_addr_t*" TIG;
+NET "pkt_comm/units[*].unit/ctrl/engine/process_bytes/saved_total_t*" TIG;
+NET "pkt_comm/units[*].unit/ctrl/engine/process_bytes/saved_comp_active_t" TIG;
+NET "pkt_comm/units[*].unit/ctrl/engine/process_bytes/saved_procb_active_t" TIG;
+// cpu
+NET "pkt_comm/units[*].unit/ctrl/cpu/uob_thread_num*" TIG;
+
+NET "pkt_comm/mode_cmp" TIG;
+
